@@ -1,0 +1,3 @@
+alias la='ls -lah --color'
+alias l='ls -l --color'
+alias vim='nvim'
