@@ -1,3 +1,6 @@
+general:
+- [ ] write install script
+
 bash:
 - [X] import aliases                                                @ 2020-04-18
 - [X] import custom scripts                                         @ 2020-04-18

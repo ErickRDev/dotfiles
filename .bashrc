@@ -1,13 +1,10 @@
-# ---------------------------
-# binds
+# ----- binds -----
 
 bind '"\C-o": "open_with_fzf\n"'
 bind '"\C-f": "cd_with_fzf\n"'
 bind '"\C-v": "vim\n"'
 
-# ---------------------------
-# sourcing
-
+# ----- sourcing -----
 
 [[ $(uname -a) == *"microsoft"* ]] && \. $HOME/.dotfiles/.aliases.wsl
 [[ -f $HOME/.dotfiles/.aliases ]] && \. $HOME/.dotfiles/.aliases
@@ -22,8 +19,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# ---------------------------
-# functions
+# ----- functions -----
 
 open_with_fzf() {
     fd -t f -H | fzf -m --preview="head -100 {}" | xargs -ro -d "\n" nvim 2>&-

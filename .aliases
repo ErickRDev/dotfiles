@@ -1,3 +1,11 @@
 alias la='ls -lah --color'
+alias ls='ls --color'
 alias l='ls -l --color'
 alias vim='nvim'
+
+alias gp='git pull'
+alias gps='git push'
+alias gl='git log'
+alias gs='git status'
+alias gd='git diff'
+alias gds='git diff --staged'

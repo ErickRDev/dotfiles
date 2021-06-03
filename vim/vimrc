@@ -1,0 +1,53 @@
+"                                   
+"                    ██▒   █▓ ██▓ ███▄ ▄███▓ ██▀███   ▄████▄  
+"                   ▓██░   █▒▓██▒▓██▒▀█▀ ██▒▓██ ▒ ██▒▒██▀ ▀█  
+"                    ▓██  █▒░▒██▒▓██    ▓██░▓██ ░▄█ ▒▒▓█    ▄ 
+"                     ▒██ █░░░██░▒██    ▒██ ▒██▀▀█▄  ▒▓▓▄ ▄██▒
+"                      ▒▀█░  ░██░▒██▒   ░██▒░██▓ ▒██▒▒ ▓███▀ ░
+"                      ░ ▐░  ░▓  ░ ▒░   ░  ░░ ▒▓ ░▒▓░░ ░▒ ▒  ░
+"                      ░ ░░   ▒ ░░  ░      ░  ░▒ ░ ▒░  ░  ▒   
+"                        ░░   ▒ ░░      ░     ░░   ░ ░        
+"                         ░   ░         ░      ░     ░ ░      
+"                        ░                           ░        
+
+set nocompatible " be iMproved, required
+set shell=bash\ --norc
+set encoding=utf8
+
+filetype off " required
+
+syntax on
+
+source ~/.dotfiles/vim/plugs.vimrc
+source ~/.dotfiles/vim/binds.vimrc
+source ~/.dotfiles/vim/tweak.vimrc
+
+" Colorschemes
+set background=dark
+if (has("termguicolors"))
+    set termguicolors
+endif
+colorscheme everforest
+
+" Clipboard interaction under WSL
+if system('uname -r') =~ "microsoft"
+    augroup Yank
+        autocmd!
+        autocmd TextYankPost * :call system('clip.exe ',@")
+    augroup END
+endif
+
+set number		     " Display line numbers
+set relativenumber " Display relative line numbers
+
+" Searching
+set incsearch      " Search as characters are entered
+set hlsearch 	     " Highlight searched terms
+
+" Status bar
+set laststatus=2
+set noshowmode
+
+" Pane splits
+set splitbelow
+set splitright
