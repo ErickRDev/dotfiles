@@ -18,9 +18,9 @@ filetype off " required
 
 syntax on
 
-source ~/.dotfiles/vim/plugs.vimrc
-source ~/.dotfiles/vim/binds.vimrc
-source ~/.dotfiles/vim/tweak.vimrc
+source ~/.dotfiles/config/vim/plugs.vim
+source ~/.dotfiles/config/vim/binds.vim
+source ~/.dotfiles/config/vim/tweak.vim
 
 lua << EOF
 -- require'lspconfig'.tsserver.setup{}

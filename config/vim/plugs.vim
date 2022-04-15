@@ -7,6 +7,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'               " vim/tmux seamless navigation
 Plug 'scrooloose/nerdcommenter'
+Plug 'kyazdani42/nvim-web-devicons'                 " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'tpope/vim-sleuth'                             " auto-detect tab/space styling of workspace
 Plug 'tpope/vim-surround'
