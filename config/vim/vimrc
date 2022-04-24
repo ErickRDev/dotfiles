@@ -23,9 +23,6 @@ source ~/.dotfiles/config/vim/binds.vim
 source ~/.dotfiles/config/vim/tweak.vim
 
 lua << EOF
--- require'lspconfig'.tsserver.setup{}
--- require'lspconfig'.pyright.setup{}
-
 require'nvim-treesitter.configs'.setup {
     ensure_installed = "maintained",
     highlight = {
