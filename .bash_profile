@@ -34,8 +34,8 @@ else
 
   eval `ssh-agent -s`
 
-  if [ -f "$HOME/.ssh/github" ] ; then
-    ssh-add ~/.ssh/github
+  if [ -f "$HOME/.ssh/github.pem" ] ; then
+    ssh-add ~/.ssh/github.pem
   fi
 fi
 
