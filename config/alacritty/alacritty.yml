@@ -1,0 +1,179 @@
+env:
+  TERM: alacritty
+
+# Font configuration
+font:
+  # Normal (roman) font face
+  normal:
+    # family: Cozette
+    # family: Monoid
+    family: Spleen
+    # family: Tamzen
+    style: Regular
+
+  # Bold font face
+  bold:
+    # family: Cozette
+    # family: Monoid
+    family: Spleen
+    # family: Tamzen
+    style: Bold
+
+  # Italic font face
+  italic:
+    # family: Cozette
+    # family: Monoid
+    family: Spleen
+    # family: Tamzen
+    style: Italic
+
+  # Bold italic font face
+  bold_italic:
+    # family: Cozette
+    # family: Monoid
+    family: Spleen
+    # family: Tamzen
+    style: Bold Italic
+
+  # Point size
+  size: 8
+
+schemes:
+  xterm: &xterm
+    primary:
+      background: '#000000'
+      foreground: '#ffffff'
+
+    normal:
+      black:   '#000000'
+      red:     '#cd0000'
+      green:   '#00cd00'
+      yellow:  '#cdcd00'
+      blue:    '#0000ee'
+      magenta: '#cd00cd'
+      cyan:    '#00cdcd'
+      white:   '#e5e5e5'
+
+    bright:
+      black:   '#7f7f7f'
+      red:     '#ff0000'
+      green:   '#00ff00'
+      yellow:  '#ffff00'
+      blue:    '#5c5cff'
+      magenta: '#ff00ff'
+      cyan:    '#00ffff'
+      white:   '#ffffff'
+
+  moonfly: &moonfly
+    primary:
+      background:        '#080808'
+      foreground:        '#b2b2b2'
+      bright_foreground: '#eeeeee'
+
+    cursor:
+      text:   '#080808'
+      cursor: '#9e9e9e'
+
+    selection:
+      text:       '#080808'
+      background: '#b2ceee'
+
+    normal:
+      black:   '#323437'
+      red:     '#ff5454'
+      green:   '#8cc85f'
+      yellow:  '#e3c78a'
+      blue:    '#80a0ff'
+      magenta: '#d183e8'
+      cyan:    '#79dac8'
+      white:   '#c6c6c6'
+
+    bright:
+      black:   '#949494'
+      red:     '#ff5189'
+      green:   '#36c692'
+      yellow:  '#c2c292'
+      blue:    '#74b2ff'
+      magenta: '#ae81ff'
+      cyan:    '#85dc85'
+      white:   '#e4e4e4'
+
+  dawnfox: &dawnfox
+    primary:
+      background: '0xfaf4ed'
+      foreground: '0x575279'
+
+    normal:
+      black:   '0x575279'
+      red:     '0xb4637a'
+      green:   '0x618774'
+      yellow:  '0xea9d34'
+      blue:    '0x286983'
+      magenta: '0x907aa9'
+      cyan:    '0x56949f'
+      white:   '0xe5e9f0'
+
+    bright:
+      black:   '0x5f5695'
+      red:     '0xc26d85'
+      green:   '0x629f81'
+      yellow:  '0xeea846'
+      blue:    '0x2d81a3'
+      magenta: '0x9a80b9'
+      cyan:    '0x5ca7b4'
+      white:   '0xe6ebf3'
+
+    indexed_colors:
+      - { index: 16, color: '0xd7827e' }
+      - { index: 17, color: '0xd685af' }
+
+colors: *moonfly
+
+# Bell
+#
+# The bell is rung every time the BEL control character is received.
+#bell:
+  # Visual Bell Animation
+  #
+  # Animation effect for flashing the screen when the visual bell is rung.
+  #
+  # Values for `animation`:
+  #   - Ease
+  #   - EaseOut
+  #   - EaseOutSine
+  #   - EaseOutQuad
+  #   - EaseOutCubic
+  #   - EaseOutQuart
+  #   - EaseOutQuint
+  #   - EaseOutExpo
+  #   - EaseOutCirc
+  #   - Linear
+  #animation: EaseOutExpo
+
+  # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
+  # disable the visual bell animation.
+  #duration: 0
+
+  # Visual bell animation color.
+  #color: '#ffffff'
+
+  # Bell Command
+  #
+  # This program is executed whenever the bell is rung.
+  #
+  # When set to `command: None`, no command will be executed.
+  #
+  # Example:
+  #   command:
+  #     program: notify-send
+  #     args: ["Hello, World!"]
+  #
+  #command: None
+
+key_bindings:
+  - { key: Key0,           mods: Control,                         action: ResetFontSize    }
+  - { key: Equals,         mods: Control,                         action: IncreaseFontSize }
+  - { key: Plus,           mods: Control,                         action: IncreaseFontSize }
+  - { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
+  - { key: Minus,          mods: Control,                         action: DecreaseFontSize }
+  - { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }

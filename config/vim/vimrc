@@ -65,27 +65,47 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "pyright", "rust_analyzer", "tsserver", "hls" }
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local servers = { "pyright", "rust_analyzer", "hls", "svelte", "solargraph" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
-    }
+    },
+    capabilities = capabilities
   }
+
+nvim_lsp.denols.setup {
+    on_attach = on_attach,
+    root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+nvim_lsp.tsserver.setup {
+    on_attach = on_attach,
+    root_dir = nvim_lsp.util.root_pattern("package.json"),
+}
 end
 EOF
 
-" Colorschemes
+lua << EOF
+local telescope = require('telescope')
+
+telescope.setup()
+telescope.load_extension('fzf')
+EOF
+
 set background=dark
 if (has("termguicolors"))
     set termguicolors
 endif
-" colorscheme 256_noir
+
+" Colorschemes
+colorscheme moonfly
 " colorscheme everforest
 " colorscheme gruvbox
-colorscheme moonfly
-let g:tokyonight_style = 'night'
+" colorscheme dawnfox
+" let g:tokyonight_style = 'night'
 " colorscheme tokyonight
 
 " Clipboard interaction under WSL
@@ -95,6 +115,13 @@ if system('uname -r') =~ "microsoft"
         autocmd TextYankPost * :call system('clip.exe ',@")
     augroup END
 endif
+
+" Status bar
+lua << EOF
+require'lualine'.setup {
+    options = { theme = 'moonfly' }
+}
+EOF
 
 set number		     " Display line numbers
 set relativenumber " Display relative line numbers
@@ -112,7 +139,6 @@ set splitbelow
 set splitright
 
 " Symbols
-" set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
 set list
 

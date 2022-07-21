@@ -16,8 +16,8 @@ cd_with_fzf() {
 
 # ---
 
-[[ $(uname -a) == *"microsoft"* ]] && \. $DOTFILES_HOME/.aliases.wsl
-[[ -f $HOME/.dotfiles/.aliases ]] && \. $DOTFILES_HOME/.aliases
+[[ $(uname -a) == *"microsoft"* ]] && \. $HOME/.dotfiles/.aliases.wsl
+[[ -f $HOME/.dotfiles/.aliases ]] && \. $HOME/.dotfiles/.aliases
 [[ -f $HOME/.fzf.bash ]] && \. $HOME/.fzf.bash
 
 for file in $HOME/.dotfiles/.local/bin/*.sh
@@ -29,4 +29,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-export PS1="\[\033[38;5;11m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]: \[$(tput sgr0)\]"
+export PS1="\h @ \w \$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') \\$ \[$(tput sgr0)\]"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
