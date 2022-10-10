@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -27,7 +28,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-sleuth'                             " auto-detect tab/space styling of workspace
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dispatch'
-
+Plug 'tpope/vim-dotenv'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 
@@ -38,7 +39,6 @@ Plug 'prettier/vim-prettier', {
 \}
 
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 
 " colorschemes
 Plug 'EdenEast/nightfox.nvim'
@@ -46,5 +46,7 @@ Plug 'bluz71/vim-moonfly-colors'
 Plug 'folke/tokyonight.nvim'
 Plug 'sainnhe/everforest'
 Plug 'morhetz/gruvbox'
+
+Plug 'shaunsingh/oxocarbon.nvim', { 'do': './install.sh' }
 
 call plug#end()
