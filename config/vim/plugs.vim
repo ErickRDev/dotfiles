@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -46,7 +46,8 @@ Plug 'bluz71/vim-moonfly-colors'
 Plug 'folke/tokyonight.nvim'
 Plug 'sainnhe/everforest'
 Plug 'morhetz/gruvbox'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
-Plug 'shaunsingh/oxocarbon.nvim', { 'do': './install.sh' }
+" Plug 'shaunsingh/oxocarbon.nvim', { 'do': './install.sh' }
 
 call plug#end()
