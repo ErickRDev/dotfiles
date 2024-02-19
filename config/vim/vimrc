@@ -45,9 +45,9 @@ if (has("termguicolors"))
 endif
 
 " Colorschemes
-colorscheme catppuccin-latte
+" colorscheme catppuccin-latte
 " colorscheme oxocarbon
-" colorscheme moonfly
+colorscheme moonfly
 " colorscheme everforest
 " colorscheme gruvbox
 " colorscheme dawnfox
