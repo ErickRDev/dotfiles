@@ -11,6 +11,11 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  if client.name == 'ruff_lsp' then
+    -- Disable hover in favor of Pyright
+    client.server_capabilities.hoverProvider = false
+  end
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -41,8 +46,9 @@ local lsp_flags = {
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = { "pyright", "rust_analyzer", "hls", "svelte", "gopls" }
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local servers = { "rust_analyzer", "hls", "svelte", "gopls" }
+
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -51,12 +57,33 @@ for _, lsp in ipairs(servers) do
   }
 
 nvim_lsp.denols.setup {
-    on_attach = on_attach,
-    root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
 }
 
 nvim_lsp.tsserver.setup {
-    on_attach = on_attach,
-    root_dir = nvim_lsp.util.root_pattern("package.json"),
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("package.json"),
 }
+
+nvim_lsp.ruff_lsp.setup {
+  on_attach = on_attach
+}
+
+nvim_lsp.pyright.setup {
+  on_attach = on_attach,
+  -- disabling import/linting capabilities to have ruff exclusively handling them.
+  settings = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        ignore = { '*' },
+      }
+    }
+  }
+}
+
+nvim_lsp.lua_ls.setup {}
 end

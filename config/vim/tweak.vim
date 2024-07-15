@@ -20,7 +20,7 @@ highlight ColorColumn ctermbg=magenta
 
 " drawing column line (limit width) on py files;
 function DrawColumnLine()
-    set colorcolumn=80
+    set colorcolumn=100
 endfunction
 
 autocmd BufRead *.py call DrawColumnLine()
