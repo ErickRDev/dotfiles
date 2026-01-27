@@ -32,13 +32,6 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-lua << EOF
-local telescope = require('telescope')
-
-telescope.setup()
-telescope.load_extension('fzf')
-EOF
-
 set background=dark
 " set background=light
 if (has("termguicolors"))
@@ -52,42 +45,3 @@ colorscheme moonfly
 " colorscheme everforest
 " colorscheme gruvbox
 " colorscheme dawnfox
-
-" Clipboard interaction under WSL
-if system('uname -r') =~ "microsoft"
-    augroup Yank
-        autocmd!
-        autocmd TextYankPost * :call system('clip.exe ',@")
-    augroup END
-endif
-
-" Status bar
-lua << EOF
-require'lualine'.setup {
-    options = { theme = 'catpuccin-latte' }
-    --options = { theme = 'moonfly' }
-}
-EOF
-
-set number		     " Display line numbers
-set relativenumber " Display relative line numbers
-
-" Searching
-set incsearch      " Search as characters are entered
-set hlsearch 	     " Highlight searched terms
-
-" Status bar
-set laststatus=2
-set noshowmode
-
-" Pane splits
-set splitbelow
-set splitright
-
-" Symbols
-set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
-set list
-
-set shiftwidth=2
-set tabstop=2
-set expandtab

@@ -47,7 +47,7 @@ local lsp_flags = {
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = { "rust_analyzer", "hls", "svelte", "gopls" }
+local servers = { "rust_analyzer", "hls", "svelte" }
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -83,6 +83,18 @@ nvim_lsp.pyright.setup {
       }
     }
   }
+}
+
+nvim_lsp.gopls.setup{
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
 }
 
 nvim_lsp.lua_ls.setup {}
