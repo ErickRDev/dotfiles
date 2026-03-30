@@ -1,12 +1,9 @@
 # Variables
 
-# set -x NVM_DIR "$HOME/.nvm"
 set --universal nvm_default_version 24
 set --universal nvm_auto_use true
 set -x PYENV_ROOT $HOME/.pyenv
 set -gx EDITOR "/opt/homebrew/bin/nvim"
-
-# General utilities
 
 set FZF_MULTI_SELECT_ARGS \
     "--multi" \
@@ -26,6 +23,12 @@ set FZF_MULTI_SELECT_ARGS \
     "--color=bg+:#293739,bg:#1B1D1E,border:#808080,spinner:#E6DB74,hl:#7E8E91,fg:#F8F8F2,header:#7E8E91,info:#A6E22E,pointer:#A6E22E,marker:#F92672,fg+:#F8F8F2,prompt:#F92672,hl+:#F92672" \
     "--color=current-fg:35,selected-fg:green:bold,marker:green:reverse"
 
+# Miscellaneous
+
+function reload_fish
+    source $HOME/.config/fish/config.fish
+end
+
 function envsource
   for line in (cat $argv | grep -v '^#')
     set item (string split -m 1 '=' $line)
@@ -33,9 +36,6 @@ function envsource
     echo "Exported key $item[1]"
   end
 end
-
-
-# Miscellaneous
 
 function urld
     python -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()));"
@@ -47,6 +47,14 @@ end
 
 # Navigation
 
+function code
+    cd $HOME/code
+end
+
+function dotfiles
+    cd $HOME/.dotfiles
+end
+
 function open_with_fzf
     fd -t f -H | fzf -m --preview="head -100 {}" | xargs -ro -d "\n" nvim 2>&-
 end
@@ -54,12 +62,6 @@ end
 function cd_with_fzf
     cd $HOME/code && cd "$(fd -t d -H | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)" && echo "$PWD"
 end
-
-# Node
-
-# function nvm
-    # bass source "$NVM_DIR/nvm.sh" --no-use ';' nvm $argv
-# end
 
 # Neovim
 
@@ -139,6 +141,13 @@ function cr
     cargo run $argv
 end
 
+# Node
+
+function load_nvm --on-variable PWD
+    if test -f .nvmrc
+        nvm use
+    end
+end
 
 # Binds
 
@@ -167,7 +176,6 @@ pyenv init - | source
 set -gx PATH "$PATH:/Users/erickrocha/Library/Application Support/Coursier/bin"
 # <<< coursier install directory <<<
 fish_add_path $HOME/.local/bin
-
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
