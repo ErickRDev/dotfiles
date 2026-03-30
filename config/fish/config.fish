@@ -1,5 +1,8 @@
 # Variables
 
+set --universal SHELL_PROMPT_PREFIX ''
+set --universal SHELL_PROMPT_SUFFIX ''
+
 set --universal nvm_default_version 24
 set --universal nvm_auto_use true
 set -x PYENV_ROOT $HOME/.pyenv
@@ -22,6 +25,16 @@ set FZF_MULTI_SELECT_ARGS \
     "--bind=ctrl-y:toggle-all,enter:accept" \
     "--color=bg+:#293739,bg:#1B1D1E,border:#808080,spinner:#E6DB74,hl:#7E8E91,fg:#F8F8F2,header:#7E8E91,info:#A6E22E,pointer:#A6E22E,marker:#F92672,fg+:#F8F8F2,prompt:#F92672,hl+:#F92672" \
     "--color=current-fg:35,selected-fg:green:bold,marker:green:reverse"
+
+# theme & prompt
+fish_config theme choose "my"
+
+function fish_prompt
+    set_color $fish_color_cwd
+    echo -n (path basename $PWD)
+    set_color --reset
+    echo -n ' ) '
+end
 
 # Miscellaneous
 
@@ -46,6 +59,10 @@ function uuid
 end
 
 # Navigation
+
+function config
+    cd $HOME/.config/
+end
 
 function code
     cd $HOME/code
@@ -153,10 +170,6 @@ end
 
 bind \cf cd_with_fzf
 bind \co open_with_fzf
-
-# Source scripts
-
-# bass source "$NVM_DIR/nvm.sh"
 
 # PATH
 
