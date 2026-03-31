@@ -2,6 +2,17 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "terminal": {
+    "shell": {
+      "with_arguments": {
+        "program": "/opt/homebrew/bin/fish",
+        "args": [
+          "-c",
+          "tmux new-session -A -s \"$(basename \"$PWD\")\" -n \"$(basename \"$PWD\")\"",
+        ],
+      },
+    },
+  },
   "icon_theme": {
     "mode": "dark",
     "light": "Zed (Default)",

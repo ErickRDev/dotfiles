@@ -75,6 +75,7 @@ info "Linking zed config..."
 mkdir -p $config_dir/zed/
 ln -s "$dotfiles_dir/config/zed/themes" "$config_dir/zed/themes"
 ln -sf "$dotfiles_dir/config/zed/settings.json" "$config_dir/zed/settings.json"
+ln -sf "$dotfiles_dir/config/zed/tasks.json" "$config_dir/zed/tasks.json"
 ln -sf "$dotfiles_dir/config/zed/keymap.json" "$config_dir/zed/keymap.json"
 ln -sf "$dotfiles_dir/config/zed/extension.toml" "$config_dir/zed/extension.toml"
 success "zed config linked"

@@ -32,7 +32,11 @@
       ],
       "cmd-shift-c": "workspace::ToggleCenteredLayout",
       "cmd-shift-d": "git::BranchDiff",
-      "ctrl-E": ["editor::MoveToEndOfLine", { "stop_at_soft_wraps": true }],
+      "ctrl-e": ["editor::MoveToEndOfLine", { "stop_at_soft_wraps": true }],
+      "ctrl-p": [
+        "task::Spawn",
+        { "task_name": "Television File Finder", "reveal_target": "center" },
+      ],
     },
   },
 ]
