@@ -45,5 +45,6 @@ fi
 info "Linking zed config..."
 mkdir -p $config_dir/zed/themes/
 ln -sf "$dotfiles_dir/config/zed/settings.json" "$config_dir/zed/settings.json"
+ln -sf "$dotfiles_dir/config/zed/keymaps.json" "$config_dir/zed/keymaps.json"
 ln -sf "$dotfiles_dir/config/zed/themes/" "$config_dir/zed/themes/"
 success "zed config linked"
