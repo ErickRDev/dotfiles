@@ -1,0 +1,38 @@
+[
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-h": null,
+    },
+  },
+  {
+    "context": "Picker > Editor",
+    "bindings": {
+      "ctrl-h": null,
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-j": null,
+      "cmd-J": null,
+    },
+  },
+  {
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneLeft", {}],
+      "ctrl-k": ["workspace::ActivatePaneUp", {}],
+      "ctrl-j": ["workspace::ActivatePaneDown", {}],
+      "ctrl-l": ["workspace::ActivatePaneRight", {}],
+      "cmd-o": [
+        "projects::OpenRecent",
+        {
+          "create_new_window": false,
+        },
+      ],
+      "cmd-shift-c": "workspace::ToggleCenteredLayout",
+      "cmd-shift-d": "git::BranchDiff",
+      "ctrl-E": ["editor::MoveToEndOfLine", { "stop_at_soft_wraps": true }],
+    },
+  },
+]
