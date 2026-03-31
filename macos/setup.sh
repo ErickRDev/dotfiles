@@ -21,7 +21,33 @@ ln -sf "$dotfiles_dir/config/fish/config.fish" "$config_dir/fish/config.fish"
 ln -sf "$dotfiles_dir/config/fish/themes/my.theme" "$config_dir/fish/themes/my.theme"
 success "fish config linked"
 
-chsh -s $(which fish)
+# configure fisher
+if ! command -v fisher &>/dev/null; then
+    install "fisher not found — installing..."
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+else
+    success "fisher already installed"
+fi
+
+# install nvm
+if ! command -v nvm &>/dev/null; then
+    install "nvm not found — installing..."
+    fisher install jorgebucaran/nvm.fish
+else
+    success "nvm already installed"
+fi
+
+# configure tmux
+if ! command -v tmux &>/dev/null; then
+    install "tmux not found — installing via brew..."
+    brew install tmux
+else
+    success "tmux already installed"
+fi
+
+info "Linking tmux config..."
+ln -sf "$dotfiles_dir/config/tmux/.tmux.conf" "$HOME/.tmux.conf"
+success "tmux config linked"
 
 # configure kitty
 if ! command -v kitty &>/dev/null; then

@@ -1,5 +1,7 @@
 # Variables
 
+set -gx XDG_CONFIG_HOME $HOME/.config/
+
 set --universal SHELL_PROMPT_PREFIX ''
 set --universal SHELL_PROMPT_SUFFIX ''
 
