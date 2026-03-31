@@ -21,6 +21,8 @@ ln -sf "$dotfiles_dir/config/fish/config.fish" "$config_dir/fish/config.fish"
 ln -sf "$dotfiles_dir/config/fish/themes/my.theme" "$config_dir/fish/themes/my.theme"
 success "fish config linked"
 
+chsh -s $(which fish)
+
 # configure kitty
 if ! command -v kitty &>/dev/null; then
     install "kitty not found — installing via installer script..."
