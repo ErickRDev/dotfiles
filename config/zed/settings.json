@@ -1,0 +1,50 @@
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
+  },
+  "show_edit_predictions": true,
+  "languages": {
+    "JSON": { "formatter": "language_server", "format_on_save": "on" },
+    "TypeScript": {
+      "language_servers": ["typescript-language-server", "!deno"],
+    },
+  },
+  "inlay_hints": {
+    "enabled": true,
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "Gruvbox Light Hard",
+    "dark": "mutation",
+  },
+  "vim_mode": true,
+  "ui_font_size": 14,
+  "buffer_font_size": 14,
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000,
+    },
+  },
+  "relative_line_numbers": "enabled",
+  "cursor_blink": false,
+  "agent": {
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+    },
+    "inline_assistant_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+    },
+  },
+}
