@@ -21,21 +21,22 @@ ln -sf "$dotfiles_dir/config/fish/config.fish" "$config_dir/fish/config.fish"
 ln -sf "$dotfiles_dir/config/fish/themes/my.theme" "$config_dir/fish/themes/my.theme"
 success "fish config linked"
 
-# configure fisher
-if ! command -v fisher &>/dev/null; then
-    install "fisher not found — installing..."
-    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-else
-    success "fisher already installed"
-fi
+# TODO: migrate this to a fish script (should not run in bash)
+# # configure fisher
+# if ! command -v fisher &>/dev/null; then
+#     install "fisher not found — installing..."
+#     curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+# else
+#     success "fisher already installed"
+# fi
 
-# install nvm
-if ! command -v nvm &>/dev/null; then
-    install "nvm not found — installing..."
-    fisher install jorgebucaran/nvm.fish
-else
-    success "nvm already installed"
-fi
+# # install nvm
+# if ! command -v nvm &>/dev/null; then
+#     install "nvm not found — installing..."
+#     fisher install jorgebucaran/nvm.fish
+# else
+#     success "nvm already installed"
+# fi
 
 # configure tmux
 if ! command -v tmux &>/dev/null; then
@@ -71,8 +72,9 @@ else
 fi
 
 info "Linking zed config..."
-mkdir -p $config_dir/zed/themes/
+mkdir -p $config_dir/zed/
+ln -s "$dotfiles_dir/config/zed/themes" "$config_dir/zed/themes"
 ln -sf "$dotfiles_dir/config/zed/settings.json" "$config_dir/zed/settings.json"
 ln -sf "$dotfiles_dir/config/zed/keymap.json" "$config_dir/zed/keymap.json"
-ln -sf "$dotfiles_dir/config/zed/themes/" "$config_dir/zed/themes/"
+ln -sf "$dotfiles_dir/config/zed/extension.toml" "$config_dir/zed/extension.toml"
 success "zed config linked"

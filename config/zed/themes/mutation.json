@@ -1,6 +1,7 @@
 {
+  "$schema": "https://zed.dev/schema/themes/v0.1.0.json",
   "name": "mutation",
-  "author": "",
+  "author": "erickr",
   "themes": [
     {
       "name": "mutation",
@@ -218,8 +219,18 @@
         "editor.document_highlight.read_background": "#2d2d2d",
         "editor.document_highlight.write_background": "#2d2d2d",
         "editor.active_line.background": "#ffffff0a",
-        "icon.accent": ""
+        "icon.accent": "#ff0",
+        "panel.overlay_background": "#000",
+        "panel.overlay_hover": "#000",
+        "icon.disabled": "#ffffff",
+        "editor.subheader.background": "#000",
+        "minimap.thumb.hover_background": "#222",
+        "version_control.deleted": "#777777",
+        "version_control.modified": "#c0c0c0",
+        "version_control.conflict": "#c0c0c0"
       }
     }
-  ]
+  ],
+  "isUserGenerated": true,
+  "description": "mutation"
 }
