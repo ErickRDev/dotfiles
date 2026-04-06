@@ -40,7 +40,11 @@ end
 
 # Miscellaneous
 
-function reload_fish
+if test -f $HOME/.dotfiles/.work/aliases.fish
+    source $HOME/.dotfiles/.work/aliases.fish
+end
+
+function fish_reload
     source $HOME/.config/fish/config.fish
 end
 

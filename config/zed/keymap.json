@@ -19,6 +19,15 @@
     },
   },
   {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-p": [
+        "task::Spawn",
+        { "task_name": "Television File Finder", "reveal_target": "center" },
+      ],
+    },
+  },
+  {
     "bindings": {
       "ctrl-h": ["workspace::ActivatePaneLeft", {}],
       "ctrl-k": ["workspace::ActivatePaneUp", {}],
@@ -33,10 +42,6 @@
       "cmd-shift-c": "workspace::ToggleCenteredLayout",
       "cmd-shift-d": "git::BranchDiff",
       "ctrl-e": ["editor::MoveToEndOfLine", { "stop_at_soft_wraps": true }],
-      "ctrl-p": [
-        "task::Spawn",
-        { "task_name": "Television File Finder", "reveal_target": "center" },
-      ],
     },
   },
 ]
