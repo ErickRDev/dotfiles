@@ -25,6 +25,7 @@
         "task::Spawn",
         { "task_name": "Television File Finder", "reveal_target": "center" },
       ],
+      "ctrl-g": ["git::Diff", {}],
     },
   },
   {

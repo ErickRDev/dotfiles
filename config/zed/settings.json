@@ -24,6 +24,9 @@
     "TypeScript": {
       "language_servers": ["typescript-language-server", "!deno"],
     },
+    "TSX": {
+      "language_servers": ["typescript-language-server", "!deno"],
+    },
   },
   "lsp": {
     "metals": {

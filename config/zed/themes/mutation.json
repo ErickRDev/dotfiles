@@ -9,6 +9,11 @@
       "style": {
         "background": "#000",
         "syntax": {
+          "type": {
+            "color": "#E38DADFF",
+            "font_style": null,
+            "font_weight": null
+          },
           "function": {
             "color": "#FFFF00",
             "font_style": null,
