@@ -2,6 +2,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "show_edit_predictions": true,
   "terminal": {
     "shell": {
       "with_arguments": {
@@ -18,11 +19,17 @@
     "light": "Zed (Default)",
     "dark": "Zed (Default)",
   },
-  "show_edit_predictions": true,
   "languages": {
     "JSON": { "formatter": "language_server", "format_on_save": "on" },
     "TypeScript": {
       "language_servers": ["typescript-language-server", "!deno"],
+    },
+  },
+  "lsp": {
+    "metals": {
+      "initialization_options": {
+        "isHttpEnabled": true,
+      },
     },
   },
   "inlay_hints": {
