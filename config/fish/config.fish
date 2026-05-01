@@ -14,13 +14,12 @@ set FZF_MULTI_SELECT_ARGS \
     "--multi" \
     "--height=40%" \
     "--border" \
-    "--prompt=Service > " \
+    "--prompt=> " \
     "--header-first" \
     "--header='Use Ctrl+Y to Toggle All Filtered Options'" \
     "--highlight-line" \
     "--info=hidden" \
     "--layout=reverse-list" \
-    "--list-label='Databases'" \
     "--marker=Ξ" \
     "--pointer=█" \
     "--style=full" \
@@ -132,6 +131,12 @@ end
 
 function gcof
     git status -s | fzf $FZF_MULTI_SELECT_ARGS | awk '{print $2}' | xargs git checkout
+end
+
+# Kubernetes
+
+function kube-ctx
+    kubectl config get-contexts | fzf $FZF_MULTI_SELECT_ARGS | awk '{print $2}' | xargs kubectl config use-context
 end
 
 # Docker
