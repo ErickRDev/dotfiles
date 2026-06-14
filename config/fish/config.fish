@@ -10,6 +10,21 @@ set --universal nvm_auto_use true
 set -x PYENV_ROOT $HOME/.pyenv
 set -gx EDITOR "/opt/homebrew/bin/nvim"
 
+set FZF_SINGLE_SELECT_ARGS \
+    "--height=40%" \
+    "--border" \
+    "--prompt=> " \
+    "--header-first" \
+    "--highlight-line" \
+    "--info=hidden" \
+    "--layout=reverse-list" \
+    "--marker=Ξ" \
+    "--pointer=█" \
+    "--style=full" \
+    "--bind=enter:accept" \
+    "--color=bg+:#293739,bg:#1B1D1E,border:#808080,spinner:#E6DB74,hl:#7E8E91,fg:#F8F8F2,header:#7E8E91,info:#A6E22E,pointer:#A6E22E,marker:#F92672,fg+:#F8F8F2,prompt:#F92672,hl+:#F92672" \
+    "--color=current-fg:35,selected-fg:green:bold,marker:green:reverse"
+
 set FZF_MULTI_SELECT_ARGS \
     "--multi" \
     "--height=40%" \
@@ -41,6 +56,15 @@ end
 
 if test -f $HOME/.dotfiles/.work/aliases.fish
     source $HOME/.dotfiles/.work/aliases.fish
+end
+
+function myip
+    curl -s -4 ifconfig.me
+    echo
+end
+
+function print_path
+    echo $PATH | sed 's/ /\n/g'
 end
 
 function fish_reload
@@ -77,6 +101,10 @@ function dotfiles
     cd $HOME/.dotfiles
 end
 
+function packed_at
+  cd $HOME/.local/share/nvim/site/pack/core/opt/
+end
+
 function open_with_fzf
     fd -t f -H | fzf -m --preview="head -100 {}" | xargs -ro -d "\n" nvim 2>&-
 end
@@ -93,13 +121,27 @@ end
 
 # Git
 
-function rm_merged_branches
-    set merged_branches (git branch --merged=main | rg -v 'main' | tr -d ' ')
-    if test (count $merged_branches) -gt 0
-        echo "At least one merged branch!"
-        git branch -d $merged_branches
-    end
+function gwt
+    git worktree list
 end
+
+function gwt.
+    cd (gwt | awk '{print $1}' | fzf $FZF_SINGLE_SELECT_ARGS)
+end
+
+function ls_merged_branches
+    git fetch --prune
+    git branch -vv | grep ': gone]' | awk '{print $1 $2}'
+end
+
+function rm_merged_branches
+    git fetch --prune
+    git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+end
+
+# TODO: make function to select a commit's hash.
+# Ideally we'd feed git log with dynamic filters into fzf and then pipe
+# the (single) selection into git a "copy hash" function.
 
 function gs
     git status $argv
@@ -133,6 +175,10 @@ function gcof
     git status -s | fzf $FZF_MULTI_SELECT_ARGS | awk '{print $2}' | xargs git checkout
 end
 
+function gsb
+    git branch | fzf | string trim | xargs git checkout
+end
+
 # Kubernetes
 
 function kube-ctx
@@ -142,11 +188,13 @@ end
 # Docker
 
 function dcs
-    docker compose ps $argv --format "table {{.Name}}\t{{.Service}}\t{{.Status}}"
+    set project_name (docker compose ls -q | head -1)
+    docker compose -p $project_name ps $argv --format "table {{.Name}}\t{{.Service}}\t{{.Status}}"
 end
 
 function dcl
-    docker compose ps --services --status=running | fzf | xargs docker compose logs -f
+    set project_name (docker compose ls -q | head -1)
+    docker compose -p $project_name ps --services --status=running | fzf | xargs docker compose -p $project_name logs -f
 end
 
 function dck
