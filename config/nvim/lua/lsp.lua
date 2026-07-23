@@ -1,5 +1,5 @@
 vim.lsp.enable({
-  "tsserver",
+  "ts_ls",
   "denols",
   "rust_analyzer",
   "lua_ls",
