@@ -8,6 +8,8 @@ vim.g.mapleader = ","
 map("n", "<leader>wh", ":split<CR>", { silent = true })
 map("n", "<leader>wv", ":vsplit<CR>", { silent = true })
 map("n", "<space><tab>", ":e#<CR>")
+map("n", "<leader>s", ":w<CR>", { silent = true })
+map("n", "<leader>x", ":x<CR>", { silent = true })
 map("n", "<leader>f", ":NvimTreeFindFile<CR>")
 map("n", "<C-n>", ":NvimTreeToggle<CR>")
 map("n", "<C-p>", telescope.find_files)
@@ -23,16 +25,19 @@ map("n", "]d", vim.diagnostic.goto_next, opts)
 map("n", "<space>q", vim.diagnostic.setloclist, opts)
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
     -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
     -- Buffer local mappings
     local bufopts = { noremap = true, silent = true, buffer = ev.buf }
+    map("n", "ga", telescope.lsp_references, bufopts)
+    map("n", "gI", vim.lsp.buf.implementation, bufopts)
+    map("n", "gy", vim.lsp.buf.type_definition, bufopts)
     map("n", "gD", vim.lsp.buf.declaration, bufopts)
-    map('n', 'gd', vim.lsp.buf.definition, bufopts)
+    map("n", "gd", vim.lsp.buf.definition, bufopts)
     map("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-    map('n', 'K', vim.lsp.buf.hover, bufopts)
+    map("n", "K", vim.lsp.buf.hover, bufopts)
   end,
 })
