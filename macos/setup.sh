@@ -58,6 +58,10 @@ else
     success "kitty already installed"
 fi
 
+info "Creating kitty symlink in ~/.local/bin/ so it is reachable via PATH"
+ln -sf "/Applications/kitty.app/Contents/MacOS/kitty" "$HOME/.local/bin/kitty"
+ln -sf "/Applications/kitty.app/Contents/MacOS/kitten" "$HOME/.local/bin/kitten"
+
 info "Linking kitty config..."
 mkdir -p $config_dir/kitty/
 ln -sf "$dotfiles_dir/config/kitty/kitty.conf" "$config_dir/kitty/kitty.conf"
