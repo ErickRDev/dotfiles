@@ -5,7 +5,7 @@ set -gx XDG_CONFIG_HOME $HOME/.config/
 set --universal SHELL_PROMPT_PREFIX ''
 set --universal SHELL_PROMPT_SUFFIX ''
 
-set --universal nvm_default_version 24
+set --universal nvm_default_version v26.5.0
 set --universal nvm_auto_use true
 set -x PYENV_ROOT $HOME/.pyenv
 set -gx EDITOR "/opt/homebrew/bin/nvim"
@@ -222,6 +222,8 @@ end
 function load_nvm --on-variable PWD
     if test -f .nvmrc
         nvm use
+    else
+      nvm use default --silent
     end
 end
 
@@ -244,6 +246,7 @@ fish_add_path /opt/homebrew/opt/postgresql@16/bin
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 pyenv init - | source
+load_nvm
 
 # >>> coursier install directory >>>
 set -gx PATH "$PATH:/Users/erickrocha/Library/Application Support/Coursier/bin"
