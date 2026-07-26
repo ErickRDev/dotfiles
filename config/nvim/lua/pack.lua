@@ -21,6 +21,8 @@ vim.pack.add({
   -- ui
   gh("nvim-lualine/lualine.nvim"),
   gh("nvim-tree/nvim-tree.lua"),
+  -- git
+  gh("sindrets/diffview.nvim"),
   -- lsp
   gh("neovim/nvim-lspconfig"),
   -- syntax highlighting

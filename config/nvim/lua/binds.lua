@@ -15,7 +15,11 @@ map("n", "<C-n>", ":NvimTreeToggle<CR>")
 map("n", "<C-p>", telescope.find_files)
 map("n", "<C-b>", telescope.buffers)
 map("n", "<C-s>", telescope.live_grep)
+map("n", "<C-x>", ":tabclose<CR>")
 map("n", "<leader>gs", telescope.grep_string)
+
+-- git
+map("n", "<C-g>", ":DiffviewOpen<CR>")
 
 -- LSP Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
