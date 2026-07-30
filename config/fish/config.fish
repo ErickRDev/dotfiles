@@ -129,6 +129,10 @@ function gwt.
     cd (gwt | awk '{print $1}' | fzf $FZF_SINGLE_SELECT_ARGS)
 end
 
+function gwt-
+    gwt | awk '{print $1}' | fzf $FZF_SINGLE_SELECT_ARGS | git worktree remove
+end
+
 function ls_merged_branches
     git fetch --prune
     git branch -vv | grep ': gone]' | awk '{print $1 $2}'
@@ -159,11 +163,11 @@ function gl
     git log
 end
 
-function ga
-    git add $argv
-end
+# function ga
+#     git add $argv
+# end
 
-function gaf
+function ga
     git status -s | fzf $FZF_MULTI_SELECT_ARGS | awk '{print $2}' | xargs git add
 end
 
@@ -171,7 +175,7 @@ function gc
     git commit $argv
 end
 
-function gcof
+function gco
     git status -s | fzf $FZF_MULTI_SELECT_ARGS | awk '{print $2}' | xargs git checkout
 end
 
