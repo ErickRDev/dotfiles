@@ -36,6 +36,7 @@ vim.pack.add({
   gh("nvim-telescope/telescope-fzf-native.nvim"),
   -- style
   gh("nvim-tree/nvim-web-devicons"),
+  gh("Aejkatappaja/cendre"),
   { src = gh("bluz71/vim-moonfly-colors"), name = "moonfly" },
   -- completion
   {

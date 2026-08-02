@@ -5,6 +5,10 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
+    "cendre": {
+      "rev": "b856bdc9a5d0aec64fd5001225f7b2d1a8c6b0fe",
+      "src": "https://github.com/Aejkatappaja/cendre"
+    },
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
