@@ -25,8 +25,9 @@ vim.pack.add({
   gh("sindrets/diffview.nvim"),
   -- lsp
   gh("neovim/nvim-lspconfig"),
-  -- syntax highlighting
+  -- syntax highlighting & rendering
   gh("nvim-treesitter/nvim-treesitter"),
+  gh("MeanderingProgrammer/render-markdown.nvim"),
   -- formatting
   gh("stevearc/conform.nvim"),
   -- navigation

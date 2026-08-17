@@ -5,7 +5,12 @@ local parsers = {
   "javascript",
   "python",
   "typescript",
-  "go"
+  "go",
+  "markdown",
+  "markdown_inline",
+  "html",
+  "latex",
+  "yaml"
 }
 
 local treesitter = require("nvim-treesitter")
