@@ -1,15 +1,24 @@
+local prettier = { "prettierd", "prettier", stop_after_first = true }
+
 require("conform").setup({
   formatters_by_ft = {
     lua = { "stylua" },
-    -- Conform will run multiple formatters sequentially
-    -- python = { "isort", "black" },
-    -- rust = { "rustfmt", lsp_format = "fallback" },
-    -- Conform will run the first available formatter
-    javascript = { "prettierd", "prettier", stop_after_first = true },
+    rust = { "rustfmt", lsp_format = "fallback" },
+    python = { "isort", "black" },
+    javascript = prettier,
+    javascriptreact = prettier,
+    typescript = prettier,
+    typescriptreact = prettier,
+    json = prettier,
+    jsonc = prettier,
+    yaml = prettier,
+    css = prettier,
+    scss = prettier,
+    html = prettier,
+    markdown = prettier,
   },
   format_on_save = {
-    -- These options will be passed to conform.format()
-    timeout_ms = 500,
+    timeout_ms = 2000,
     lsp_format = "fallback",
   },
 })

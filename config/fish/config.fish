@@ -5,7 +5,7 @@ set -gx XDG_CONFIG_HOME $HOME/.config/
 set --universal SHELL_PROMPT_PREFIX ''
 set --universal SHELL_PROMPT_SUFFIX ''
 
-set --universal nvm_default_version v26.5.0
+set --universal nvm_default_version v26.5
 set --universal nvm_auto_use true
 set -x PYENV_ROOT $HOME/.pyenv
 set -gx EDITOR "/opt/homebrew/bin/nvim"
@@ -122,15 +122,15 @@ end
 # Git
 
 function gwt
-    git worktree list
+    git worktree $argv
 end
 
 function gwt.
-    cd (gwt | awk '{print $1}' | fzf $FZF_SINGLE_SELECT_ARGS)
+    cd (gwt list | awk '{print $1}' | fzf $FZF_SINGLE_SELECT_ARGS)
 end
 
 function gwt-
-    gwt | awk '{print $1}' | fzf $FZF_SINGLE_SELECT_ARGS | git worktree remove
+    gwt list | awk '{print $1}' | fzf $FZF_SINGLE_SELECT_ARGS | git worktree remove
 end
 
 function ls_merged_branches
