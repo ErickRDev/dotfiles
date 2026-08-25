@@ -43,6 +43,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "gy", vim.lsp.buf.type_definition, bufopts)
     map("n", "gD", vim.lsp.buf.declaration, bufopts)
     map("n", "gd", vim.lsp.buf.definition, bufopts)
+    map("n", "<c-leftmouse>", vim.lsp.buf.definition, bufopts)
     map("n", "<space>rn", vim.lsp.buf.rename, bufopts)
     map("n", "K", vim.lsp.buf.hover, bufopts)
   end,
