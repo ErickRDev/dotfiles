@@ -19,6 +19,7 @@ map("n", "<C-b>", telescope.buffers)
 map("n", "<C-s>", telescope.live_grep)
 map("n", "<C-x>", ":tabclose<CR>")
 map("n", "<leader>gs", telescope.grep_string)
+map("n", "<leader>o", telescope.treesitter)
 
 -- git
 map("n", "<C-g>", ":DiffviewOpen<CR>")
@@ -43,6 +44,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "gy", vim.lsp.buf.type_definition, bufopts)
     map("n", "gD", vim.lsp.buf.declaration, bufopts)
     map("n", "gd", vim.lsp.buf.definition, bufopts)
+    map("n", "gs", telescope.lsp_document_symbols, bufopts)
+    map("n", "gS", telescope.lsp_dynamic_workspace_symbols, bufopts)
     map("n", "<c-leftmouse>", vim.lsp.buf.definition, bufopts)
     map("n", "<space>rn", vim.lsp.buf.rename, bufopts)
     map("n", "K", vim.lsp.buf.hover, bufopts)
