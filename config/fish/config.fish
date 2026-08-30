@@ -72,6 +72,10 @@ function fish_reload
     source $HOME/.config/fish/config.fish
 end
 
+function fishr
+  fish_reload
+end
+
 function envsource
   for line in (cat $argv | grep -v '^#')
     set item (string split -m 1 '=' $line)
@@ -164,12 +168,12 @@ function gl
     git log
 end
 
-# function ga
-#     git add $argv
-# end
-
 function ga
+  if test (count $argv) -gt 0
+    git add $argv
+  else
     git status -s | fzf $FZF_MULTI_SELECT_ARGS | awk '{print $2}' | xargs git add
+  end
 end
 
 function gc
@@ -253,10 +257,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 pyenv init - | source
 load_nvm
 
+fish_add_path $HOME/.local/bin
+
 # >>> coursier install directory >>>
 set -gx PATH "$PATH:/Users/erickrocha/Library/Application Support/Coursier/bin"
 # <<< coursier install directory <<<
-fish_add_path $HOME/.local/bin
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
@@ -265,3 +270,4 @@ fish_add_path $HOME/.local/bin
 # This section can be safely removed at any time if needed.
 test -r '/Users/erickrocha/.opam/opam-init/init.fish' && source '/Users/erickrocha/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
 # END opam configuration
+

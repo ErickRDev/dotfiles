@@ -66,20 +66,3 @@ info "Linking kitty config..."
 mkdir -p $config_dir/kitty/
 ln -sf "$dotfiles_dir/config/kitty/kitty.conf" "$config_dir/kitty/kitty.conf"
 success "kitty config linked"
-
-# configure zed
-if ! command -v zed &>/dev/null; then
-    install "zed not found — installing via brew cask..."
-    brew install --cask zed
-else
-    success "zed already installed"
-fi
-
-info "Linking zed config..."
-mkdir -p $config_dir/zed/
-ln -s "$dotfiles_dir/config/zed/themes" "$config_dir/zed/themes"
-ln -sf "$dotfiles_dir/config/zed/settings.json" "$config_dir/zed/settings.json"
-ln -sf "$dotfiles_dir/config/zed/tasks.json" "$config_dir/zed/tasks.json"
-ln -sf "$dotfiles_dir/config/zed/keymap.json" "$config_dir/zed/keymap.json"
-ln -sf "$dotfiles_dir/config/zed/extension.toml" "$config_dir/zed/extension.toml"
-success "zed config linked"
