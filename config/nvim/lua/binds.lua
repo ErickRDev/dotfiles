@@ -1,4 +1,5 @@
 local telescope = require("telescope.builtin")
+local diffview = require("diffview.actions")
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
@@ -17,12 +18,21 @@ map("n", "<C-n>", ":NvimTreeToggle<CR>")
 map("n", "<C-p>", telescope.find_files)
 map("n", "<C-b>", telescope.buffers)
 map("n", "<C-s>", telescope.live_grep)
-map("n", "<C-x>", ":tabclose<CR>")
+map("n", "<C-x>", function()
+  if #vim.api.nvim_list_tabpages() > 1 then
+    vim.cmd.tabclose()
+  else
+    vim.cmd.quitall()
+  end
+end, { silent = true })
 map("n", "<leader>gs", telescope.grep_string)
 map("n", "<leader>o", telescope.treesitter)
 
 -- git
 map("n", "<C-g>", ":DiffviewOpen<CR>")
+map("n", "<C-f>", ":DiffviewFileHistory<CR>")
+map("n", "<C-F>", ":DiffviewFileHistory %<CR>")
+map("n", "g<space>", diffview.goto_file_edit)
 
 -- LSP Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

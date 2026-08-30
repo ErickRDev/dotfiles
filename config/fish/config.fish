@@ -9,6 +9,7 @@ set --universal nvm_default_version v26.5
 set --universal nvm_auto_use true
 set -x PYENV_ROOT $HOME/.pyenv
 set -gx EDITOR "/opt/homebrew/bin/nvim"
+set -gx RAINFROG_CONFIG $XDG_CONFIG_HOME/rainfrog
 
 set FZF_SINGLE_SELECT_ARGS \
     "--height=40%" \
